@@ -18,7 +18,7 @@ import ServerAdminPanel from './pages/dashboard/ServerAdminPanel';
 import Checkout from './pages/Checkout';
 import ServerDemo from './pages/ServerDemo';
 import PrivateRoute from './components/PrivateRoute';
-import { theme } from './theme';
+import theme from './theme';
 
 function App() {
   return (

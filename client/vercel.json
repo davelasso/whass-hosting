@@ -18,5 +18,8 @@
   ],
   "env": {
     "VITE_API_URL": "https://whass-api.railway.app"
-  }
+  },
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
 } 

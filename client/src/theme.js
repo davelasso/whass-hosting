@@ -1,19 +1,17 @@
 import { createTheme } from '@mui/material/styles';
 
 // Tema personalizado para Material UI
-export const theme = createTheme({
+const theme = createTheme({
   palette: {
     primary: {
-      main: '#2196f3', // Azul
-      light: '#64b5f6',
-      dark: '#1976d2',
-      contrastText: '#fff',
+      main: '#1976d2',
+      light: '#42a5f5',
+      dark: '#1565c0',
     },
     secondary: {
-      main: '#ff9800', // Naranja
-      light: '#ffb74d',
-      dark: '#f57c00',
-      contrastText: '#fff',
+      main: '#9c27b0',
+      light: '#ba68c8',
+      dark: '#7b1fa2',
     },
     error: {
       main: '#f44336',
@@ -33,7 +31,15 @@ export const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+    fontFamily: [
+      '-apple-system',
+      'BlinkMacSystemFont',
+      '"Segoe UI"',
+      'Roboto',
+      '"Helvetica Neue"',
+      'Arial',
+      'sans-serif',
+    ].join(','),
     h1: {
       fontWeight: 500,
     },
@@ -61,7 +67,6 @@ export const theme = createTheme({
       styleOverrides: {
         root: {
           textTransform: 'none',
-          borderRadius: 8,
         },
       },
     },
@@ -75,3 +80,5 @@ export const theme = createTheme({
     },
   },
 });
+
+export default theme;

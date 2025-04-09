@@ -4,6 +4,7 @@ import path from 'path';
 
 export default defineConfig({
   plugins: [react()],
+  root: './',
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
@@ -13,11 +14,8 @@ export default defineConfig({
     outDir: 'dist',
     sourcemap: true,
     rollupOptions: {
-      output: {
-        manualChunks: {
-          vendor: ['react', 'react-dom', 'react-router-dom'],
-          mui: ['@mui/material', '@mui/icons-material'],
-        },
+      input: {
+        main: path.resolve(__dirname, 'index.html'),
       },
     },
   },

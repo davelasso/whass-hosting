@@ -1,13 +1,10 @@
 /**
- * Servicio para la gestión de backups de servidores Minecraft
+ * Servicio para gestión de backups de servidores Minecraft
  */
 const fs = require('fs').promises;
 const path = require('path');
-const util = require('util');
-const exec = util.promisify(require('child_process').exec);
 const archiver = require('archiver');
-const extract = require('extract-zip');
-const winston = require('winston');
+const { createWriteStream, createReadStream, promises: fsPromises } = require('fs');
 const mongoose = require('mongoose');
 const Backup = require('../models/Backup');
 const Server = require('../models/Server');
@@ -15,12 +12,8 @@ const backupConfig = require('../config/backupConfig');
 const logger = require('../utils/logger');
 const dockerService = require('./dockerService');
 
-// Constantes
-const BACKUP_DIR = process.env.BACKUP_DIR || path.join(__dirname, '../../backups');
-const SERVER_DATA_DIR = process.env.SERVER_DATA_DIR || path.join(__dirname, '../../data/servers');
-
 /**
- * Crea un backup de un servidor Minecraft
+ * Crea un backup de un servidor de Minecraft
  * @param {string} serverId - ID del servidor
  * @param {string} userId - ID del usuario propietario
  * @param {string} description - Descripción del backup
@@ -51,7 +44,7 @@ const createServerBackup = async (serverId, userId, description, isAutomatic = f
     const serverDataDir = backupConfig.getServerDataDir(serverId);
     
     // Verificar si el directorio de datos existe
-    await fs.access(serverDataDir).catch(() => {
+    await fsPromises.access(serverDataDir).catch(() => {
       throw new Error(`Directorio de datos del servidor no encontrado: ${serverDataDir}`);
     });
     
@@ -144,7 +137,7 @@ const restoreBackup = async (backupId, serverId, userId) => {
     }
     
     // Verificar si el backup existe físicamente
-    await fs.access(backup.path).catch(() => {
+    await fsPromises.access(backup.path).catch(() => {
       throw new Error(`Archivo de backup no encontrado: ${backup.path}`);
     });
     
@@ -162,7 +155,7 @@ const restoreBackup = async (backupId, serverId, userId) => {
     
     try {
       // Descomprimir el backup en el directorio temporal
-      await extract(backup.path, tempDir);
+      await extractZip(backup.path, tempDir);
       
       // Obtener la ruta del directorio de datos del servidor
       const serverDataDir = backupConfig.getServerDataDir(serverId);
@@ -228,7 +221,7 @@ const deleteBackup = async (backupId, serverId, userId) => {
     }
     
     // Eliminar el archivo de backup del sistema de archivos
-    await fs.unlink(backup.path).catch(err => {
+    await fsPromises.unlink(backup.path).catch(err => {
       logger.warn(`No se pudo eliminar el archivo de backup ${backup.path}: ${err.message}`);
     });
     
@@ -303,7 +296,7 @@ const cleanupOldBackups = async (serverId, maxBackups, maxDays) => {
     for (const backup of toDelete) {
       try {
         // Eliminar archivo físico
-        await fs.unlink(backup.path).catch(err => {
+        await fsPromises.unlink(backup.path).catch(err => {
           logger.warn(`No se pudo eliminar el archivo de backup ${backup.path}: ${err.message}`);
         });
         
@@ -382,6 +375,7 @@ const compressDirectory = (sourceDir, outputPath) => {
  * @returns {Promise<void>}
  */
 const extractZip = async (zipPath, destDir) => {
+  const extract = require('extract-zip');
   await extract(zipPath, { dir: destDir });
 };
 
@@ -392,10 +386,10 @@ const extractZip = async (zipPath, destDir) => {
  */
 const createDirectoryIfNotExists = async (dir) => {
   try {
-    await fs.access(dir);
+    await fsPromises.access(dir);
   } catch (error) {
     // El directorio no existe, crearlo
-    await fs.mkdir(dir, { recursive: true });
+    await fsPromises.mkdir(dir, { recursive: true });
   }
 };
 
@@ -405,7 +399,7 @@ const createDirectoryIfNotExists = async (dir) => {
  * @returns {Promise<void>}
  */
 const removeDirectory = async (dir) => {
-  await fs.rm(dir, { recursive: true, force: true });
+  await fsPromises.rm(dir, { recursive: true, force: true });
 };
 
 /**
@@ -414,16 +408,16 @@ const removeDirectory = async (dir) => {
  * @returns {Promise<void>}
  */
 const removeDirectoryContents = async (dir) => {
-  const files = await fs.readdir(dir);
+  const files = await fsPromises.readdir(dir);
   
   for (const file of files) {
     const filePath = path.join(dir, file);
-    const stat = await fs.lstat(filePath);
+    const stat = await fsPromises.lstat(filePath);
     
     if (stat.isDirectory()) {
       await removeDirectory(filePath);
     } else {
-      await fs.unlink(filePath);
+      await fsPromises.unlink(filePath);
     }
   }
 };
@@ -438,13 +432,13 @@ const copyDirectoryContents = async (sourceDir, destDir) => {
   // Asegurar que el directorio de destino existe
   await createDirectoryIfNotExists(destDir);
   
-  const files = await fs.readdir(sourceDir);
+  const files = await fsPromises.readdir(sourceDir);
   
   for (const file of files) {
     const sourcePath = path.join(sourceDir, file);
     const destPath = path.join(destDir, file);
     
-    const stat = await fs.lstat(sourcePath);
+    const stat = await fsPromises.lstat(sourcePath);
     
     if (stat.isDirectory()) {
       // Crear subdirectorio y copiar su contenido
@@ -452,7 +446,7 @@ const copyDirectoryContents = async (sourceDir, destDir) => {
       await copyDirectoryContents(sourcePath, destPath);
     } else {
       // Copiar archivo
-      await fs.copyFile(sourcePath, destPath);
+      await fsPromises.copyFile(sourcePath, destPath);
     }
   }
 };
@@ -478,4 +472,4 @@ module.exports = {
   restoreBackup,
   deleteBackup,
   cleanupOldBackups
-}; 
+};

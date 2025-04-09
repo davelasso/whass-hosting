@@ -1,0 +1,215 @@
+{"level":"info","message":"Servidor ejecutándose en el puerto 5000","timestamp":"2025-04-08T19:26:30.398Z"}
+{"level":"info","message":"Documentación API disponible en http://localhost:5000/api-docs","timestamp":"2025-04-08T19:26:30.406Z"}
+{"level":"error","message":"Error al conectar a MongoDB: connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017","timestamp":"2025-04-08T19:27:00.410Z"}
+{"level":"info","message":"Servidor ejecutándose en el puerto 5001","timestamp":"2025-04-08T20:56:00.848Z"}
+{"level":"info","message":"Documentación API disponible en http://localhost:5001/api-docs","timestamp":"2025-04-08T20:56:00.854Z"}
+{"level":"error","message":"Error al conectar a MongoDB: connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017","timestamp":"2025-04-08T20:56:30.847Z"}
+{"level":"info","message":"Servidor ejecutándose en el puerto 5001","timestamp":"2025-04-08T21:00:27.969Z"}
+{"level":"info","message":"Documentación API disponible en http://localhost:5001/api-docs","timestamp":"2025-04-08T21:00:27.974Z"}
+{"level":"error","message":"Error al conectar a MongoDB: connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017","timestamp":"2025-04-08T21:00:57.974Z"}
+{"level":"info","message":"Servidor ejecutándose en el puerto 5001","timestamp":"2025-04-08T21:02:10.306Z"}
+{"level":"info","message":"Documentación API disponible en http://localhost:5001/api-docs","timestamp":"2025-04-08T21:02:10.313Z"}
+{"level":"error","message":"Error al conectar a MongoDB: querySrv ENOTFOUND _mongodb._tcp.cluster0.mongodb.net","timestamp":"2025-04-08T21:02:10.381Z"}
+{"level":"info","message":"Servidor ejecutándose en el puerto 5001","timestamp":"2025-04-08T21:04:54.005Z"}
+{"level":"info","message":"Documentación API disponible en http://localhost:5001/api-docs","timestamp":"2025-04-08T21:04:54.046Z"}
+{"level":"warn","message":"No se pudo usar MongoDB Memory Server: Instance failed to start within 10000ms. Intentando conexión normal.","timestamp":"2025-04-08T21:07:23.415Z"}
+{"level":"error","message":"Error al conectar a MongoDB: connect ECONNREFUSED 127.0.0.1:27017","timestamp":"2025-04-08T21:07:53.491Z"}
+{"level":"info","message":"Servidor ejecutándose en el puerto 5001","timestamp":"2025-04-08T21:07:53.496Z"}
+{"level":"info","message":"Documentación API disponible en http://localhost:5001/api-docs","timestamp":"2025-04-08T21:07:53.498Z"}
+{"level":"error","message":"ERROR NO MANEJADO: EXCEPCIÓN NO CAPTURADA","timestamp":"2025-04-08T21:18:41.019Z"}
+{"level":"info","message":"Servidor ejecutándose en el puerto 5001","timestamp":"2025-04-08T21:19:29.778Z"}
+{"level":"info","message":"Documentación API disponible en http://localhost:5001/api-docs","timestamp":"2025-04-08T21:19:29.780Z"}
+{"level":"error","message":"ERROR NO MANEJADO: EXCEPCIÓN NO CAPTURADA","timestamp":"2025-04-08T21:23:30.336Z"}
+{"level":"error","message":"ERROR NO MANEJADO: EXCEPCIÓN NO CAPTURADA","timestamp":"2025-04-08T21:30:23.860Z"}
+{"level":"warn","message":"No se pudo usar MongoDB Memory Server: Instance failed to start within 10000ms. Intentando conexión normal.","timestamp":"2025-04-09T00:00:55.498Z"}
+{"level":"info","message":"Conexión a MongoDB establecida","timestamp":"2025-04-09T00:00:55.636Z"}
+{"level":"info","message":"Servidor ejecutándose en el puerto 5001","timestamp":"2025-04-09T00:00:55.642Z"}
+{"level":"info","message":"Documentación API disponible en http://localhost:5001/api-docs","timestamp":"2025-04-09T00:00:55.643Z"}
+{"level":"error","message":"ERROR NO MANEJADO: EXCEPCIÓN NO CAPTURADA","timestamp":"2025-04-09T00:01:27.496Z"}
+{"level":"error","message":"ERROR NO MANEJADO: EXCEPCIÓN NO CAPTURADA","timestamp":"2025-04-09T00:55:40.166Z"}
+{"level":"warn","message":"No se pudo usar MongoDB Memory Server: Instance failed to start within 10000ms. Intentando conexión normal.","timestamp":"2025-04-09T02:26:43.288Z"}
+{"level":"info","message":"Conexión a MongoDB establecida","timestamp":"2025-04-09T02:26:43.376Z"}
+{"level":"info","message":"Servidor ejecutándose en el puerto 5001","timestamp":"2025-04-09T02:26:43.381Z"}
+{"level":"info","message":"Documentación API disponible en http://localhost:5001/api-docs","timestamp":"2025-04-09T02:26:43.381Z"}
+{"level":"warn","message":"No se pudo usar MongoDB Memory Server: Instance failed to start within 10000ms. Intentando conexión normal.","timestamp":"2025-04-09T02:35:10.696Z"}
+{"level":"info","message":"Conexión a MongoDB establecida","timestamp":"2025-04-09T02:35:10.782Z"}
+{"level":"info","message":"Servidor ejecutándose en el puerto 5001","timestamp":"2025-04-09T02:35:10.788Z"}
+{"level":"info","message":"Documentación API disponible en http://localhost:5001/api-docs","timestamp":"2025-04-09T02:35:10.788Z"}
+{"level":"warn","message":"No se pudo usar MongoDB Memory Server: Instance failed to start within 10000ms. Intentando conexión normal.","timestamp":"2025-04-09T02:39:34.690Z"}
+{"level":"info","message":"Conexión a MongoDB establecida","timestamp":"2025-04-09T02:39:34.745Z"}
+{"level":"info","message":"Servidor ejecutándose en el puerto 5001","timestamp":"2025-04-09T02:39:34.750Z"}
+{"level":"info","message":"Documentación API disponible en http://localhost:5001/api-docs","timestamp":"2025-04-09T02:39:34.751Z"}
+{"level":"warn","message":"No se pudo usar MongoDB Memory Server: Instance failed to start within 10000ms. Intentando conexión normal.","timestamp":"2025-04-09T02:39:39.172Z"}
+{"level":"info","message":"Conexión a MongoDB establecida","timestamp":"2025-04-09T02:39:39.324Z"}
+{"level":"info","message":"Servidor ejecutándose en el puerto 5001","timestamp":"2025-04-09T02:43:19.622Z"}
+{"level":"info","message":"Documentación API disponible en http://localhost:5001/api-docs","timestamp":"2025-04-09T02:43:19.623Z"}
+{"level":"error","message":"ERROR NO MANEJADO: EXCEPCIÓN NO CAPTURADA","timestamp":"2025-04-09T02:43:22.085Z"}
+{"level":"info","message":"Servidor ejecutándose en el puerto 5001","timestamp":"2025-04-09T02:43:53.314Z"}
+{"level":"info","message":"Documentación API disponible en http://localhost:5001/api-docs","timestamp":"2025-04-09T02:43:53.316Z"}
+{"level":"error","message":"ERROR NO MANEJADO: EXCEPCIÓN NO CAPTURADA","timestamp":"2025-04-09T02:43:56.151Z"}
+{"level":"error","message":"ERROR NO MANEJADO: EXCEPCIÓN NO CAPTURADA","timestamp":"2025-04-09T02:45:13.810Z"}
+{"level":"info","message":"Servidor ejecutándose en el puerto 5002","timestamp":"2025-04-09T02:54:37.272Z"}
+{"level":"info","message":"Documentación API disponible en http://localhost:5002/api-docs","timestamp":"2025-04-09T02:54:37.274Z"}
+{"level":"info","message":"Servidor ejecutándose en el puerto 5002","timestamp":"2025-04-09T03:04:42.297Z"}
+{"level":"info","message":"Documentación API disponible en http://localhost:5002/api-docs","timestamp":"2025-04-09T03:04:42.298Z"}
+{"level":"info","message":"Servidor ejecutándose en el puerto 5002","timestamp":"2025-04-09T03:06:38.792Z"}
+{"level":"info","message":"Documentación API disponible en http://localhost:5002/api-docs","timestamp":"2025-04-09T03:06:38.794Z"}
+{"level":"warn","message":"Puerto 5002 en uso, intentando con puerto alternativo...","timestamp":"2025-04-09T03:26:30.249Z"}
+{"level":"info","message":"Servidor ejecutándose en el puerto 5002","timestamp":"2025-04-09T03:26:30.255Z"}
+{"level":"info","message":"Documentación API disponible en http://localhost:5002/api-docs","timestamp":"2025-04-09T03:26:30.256Z"}
+{"level":"info","message":"Servidor ejecutándose en el puerto 5003","timestamp":"2025-04-09T03:26:30.257Z"}
+{"level":"info","message":"Documentación API disponible en http://localhost:5003/api-docs","timestamp":"2025-04-09T03:26:30.258Z"}
+{"level":"error","message":"Error: No estás autorizado para acceder a esta ruta","timestamp":"2025-04-09T03:27:02.851Z"}
+{"level":"debug","message":"Error: No estás autorizado para acceder a esta ruta\n    at C:\\Users\\inspe\\OneDrive\\Escritorio\\whass\\server\\middleware\\auth.js:21:17\n    at C:\\Users\\inspe\\OneDrive\\Escritorio\\whass\\server\\middleware\\async.js:7:19\n    at Layer.handle [as handle_request] (C:\\Users\\inspe\\OneDrive\\Escritorio\\whass\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at trim_prefix (C:\\Users\\inspe\\OneDrive\\Escritorio\\whass\\node_modules\\express\\lib\\router\\index.js:328:13)\n    at C:\\Users\\inspe\\OneDrive\\Escritorio\\whass\\node_modules\\express\\lib\\router\\index.js:286:9\n    at Function.process_params (C:\\Users\\inspe\\OneDrive\\Escritorio\\whass\\node_modules\\express\\lib\\router\\index.js:346:12)\n    at next (C:\\Users\\inspe\\OneDrive\\Escritorio\\whass\\node_modules\\express\\lib\\router\\index.js:280:10)\n    at Function.handle (C:\\Users\\inspe\\OneDrive\\Escritorio\\whass\\node_modules\\express\\lib\\router\\index.js:175:3)\n    at router (C:\\Users\\inspe\\OneDrive\\Escritorio\\whass\\node_modules\\express\\lib\\router\\index.js:47:12)\n    at Layer.handle [as handle_request] (C:\\Users\\inspe\\OneDrive\\Escritorio\\whass\\node_modules\\express\\lib\\router\\layer.js:95:5)","timestamp":"2025-04-09T03:27:02.949Z"}
+{"level":"info","message":"Conexión a MongoDB establecida en mongodb://127.0.0.1:27017/ddsbedrocl","timestamp":"2025-04-09T03:34:41.997Z"}
+{"level":"info","message":"Servidor ejecutándose en el puerto 5002","timestamp":"2025-04-09T03:34:42.012Z"}
+{"level":"info","message":"Documentación API disponible en http://localhost:5002/api-docs","timestamp":"2025-04-09T03:34:42.013Z"}
+{"level":"info","message":"Conexión a MongoDB establecida en mongodb://127.0.0.1:27017/ddsbedrocl","timestamp":"2025-04-09T03:34:43.883Z"}
+{"level":"warn","message":"Puerto 5002 en uso, intentando con puerto alternativo...","timestamp":"2025-04-09T03:34:43.892Z"}
+{"level":"info","message":"Servidor ejecutándose en el puerto 5002","timestamp":"2025-04-09T03:34:43.899Z"}
+{"level":"info","message":"Documentación API disponible en http://localhost:5002/api-docs","timestamp":"2025-04-09T03:34:43.900Z"}
+{"level":"info","message":"Servidor ejecutándose en el puerto 5003","timestamp":"2025-04-09T03:34:43.904Z"}
+{"level":"info","message":"Documentación API disponible en http://localhost:5003/api-docs","timestamp":"2025-04-09T03:34:43.907Z"}
+{"level":"info","message":"Conexión a MongoDB establecida en mongodb://127.0.0.1:27017/ddsbedrocl","timestamp":"2025-04-09T03:51:02.956Z"}
+{"level":"info","message":"Servidor ejecutándose en el puerto 5002","timestamp":"2025-04-09T03:51:02.992Z"}
+{"level":"info","message":"Documentación API disponible en http://localhost:5002/api-docs","timestamp":"2025-04-09T03:51:02.997Z"}
+{"level":"info","message":"Conexión a MongoDB establecida en mongodb://127.0.0.1:27017/ddsbedrocl","timestamp":"2025-04-09T03:51:03.006Z"}
+{"level":"warn","message":"Puerto 5002 en uso, intentando con puerto alternativo...","timestamp":"2025-04-09T03:51:03.020Z"}
+{"level":"info","message":"Servidor ejecutándose en el puerto 5002","timestamp":"2025-04-09T03:51:03.026Z"}
+{"level":"info","message":"Documentación API disponible en http://localhost:5002/api-docs","timestamp":"2025-04-09T03:51:03.028Z"}
+{"level":"info","message":"Servidor ejecutándose en el puerto 5003","timestamp":"2025-04-09T03:51:03.029Z"}
+{"level":"info","message":"Documentación API disponible en http://localhost:5003/api-docs","timestamp":"2025-04-09T03:51:03.029Z"}
+{"level":"info","message":"Conexión a MongoDB establecida en mongodb://127.0.0.1:27017/ddsbedrocl","timestamp":"2025-04-09T03:51:56.058Z"}
+{"level":"info","message":"Servidor ejecutándose en el puerto 5002","timestamp":"2025-04-09T03:51:56.092Z"}
+{"level":"info","message":"Documentación API disponible en http://localhost:5002/api-docs","timestamp":"2025-04-09T03:51:56.093Z"}
+{"level":"info","message":"Conexión a MongoDB establecida en mongodb://127.0.0.1:27017/ddsbedrocl","timestamp":"2025-04-09T03:51:58.566Z"}
+{"level":"warn","message":"Puerto 5002 en uso, intentando con puerto alternativo...","timestamp":"2025-04-09T03:51:58.654Z"}
+{"level":"info","message":"Servidor ejecutándose en el puerto 5002","timestamp":"2025-04-09T03:51:58.671Z"}
+{"level":"info","message":"Documentación API disponible en http://localhost:5002/api-docs","timestamp":"2025-04-09T03:51:58.705Z"}
+{"level":"info","message":"Servidor ejecutándose en el puerto 5003","timestamp":"2025-04-09T03:51:58.727Z"}
+{"level":"info","message":"Documentación API disponible en http://localhost:5003/api-docs","timestamp":"2025-04-09T03:51:58.768Z"}
+{"level":"info","message":"Conexión a MongoDB establecida en mongodb://127.0.0.1:27017/ddsbedrocl","timestamp":"2025-04-09T04:07:17.782Z"}
+{"level":"info","message":"Conexión a MongoDB establecida en mongodb://127.0.0.1:27017/ddsbedrocl","timestamp":"2025-04-09T04:07:17.865Z"}
+{"level":"info","message":"Servidor ejecutándose en el puerto 5002","timestamp":"2025-04-09T04:07:17.865Z"}
+{"level":"info","message":"Documentación API disponible en http://localhost:5002/api-docs","timestamp":"2025-04-09T04:07:17.879Z"}
+{"level":"warn","message":"Puerto 5002 en uso, intentando con puerto alternativo...","timestamp":"2025-04-09T04:07:17.899Z"}
+{"level":"info","message":"Servidor ejecutándose en el puerto 5002","timestamp":"2025-04-09T04:07:17.908Z"}
+{"level":"info","message":"Documentación API disponible en http://localhost:5002/api-docs","timestamp":"2025-04-09T04:07:17.908Z"}
+{"level":"info","message":"Servidor ejecutándose en el puerto 5003","timestamp":"2025-04-09T04:07:17.910Z"}
+{"level":"info","message":"Documentación API disponible en http://localhost:5003/api-docs","timestamp":"2025-04-09T04:07:17.911Z"}
+{"level":"info","message":"Conexión a MongoDB establecida en mongodb://127.0.0.1:27017/ddsbedrocl","timestamp":"2025-04-09T04:09:14.309Z"}
+{"level":"info","message":"Conexión a MongoDB establecida en mongodb://127.0.0.1:27017/ddsbedrocl","timestamp":"2025-04-09T04:09:14.316Z"}
+{"level":"info","message":"Servidor ejecutándose en el puerto 5002","timestamp":"2025-04-09T04:09:14.333Z"}
+{"level":"info","message":"Documentación API disponible en http://localhost:5002/api-docs","timestamp":"2025-04-09T04:09:14.334Z"}
+{"level":"warn","message":"Puerto 5002 en uso, intentando con puerto alternativo...","timestamp":"2025-04-09T04:09:14.345Z"}
+{"level":"info","message":"Servidor ejecutándose en el puerto 5002","timestamp":"2025-04-09T04:09:14.360Z"}
+{"level":"info","message":"Documentación API disponible en http://localhost:5002/api-docs","timestamp":"2025-04-09T04:09:14.361Z"}
+{"level":"info","message":"Servidor ejecutándose en el puerto 5003","timestamp":"2025-04-09T04:09:14.362Z"}
+{"level":"info","message":"Documentación API disponible en http://localhost:5003/api-docs","timestamp":"2025-04-09T04:09:14.363Z"}
+{"level":"info","message":"Conexión a MongoDB establecida en mongodb://127.0.0.1:27017/ddsbedrocl","timestamp":"2025-04-09T04:09:26.141Z"}
+{"level":"info","message":"Servidor ejecutándose en el puerto 5002","timestamp":"2025-04-09T04:09:26.152Z"}
+{"level":"info","message":"Documentación API disponible en http://localhost:5002/api-docs","timestamp":"2025-04-09T04:09:26.153Z"}
+{"level":"info","message":"Conexión a MongoDB establecida en mongodb://127.0.0.1:27017/ddsbedrocl","timestamp":"2025-04-09T04:09:26.189Z"}
+{"level":"warn","message":"Puerto 5002 en uso, intentando con puerto alternativo...","timestamp":"2025-04-09T04:09:26.201Z"}
+{"level":"info","message":"Servidor ejecutándose en el puerto 5002","timestamp":"2025-04-09T04:09:26.206Z"}
+{"level":"info","message":"Documentación API disponible en http://localhost:5002/api-docs","timestamp":"2025-04-09T04:09:26.207Z"}
+{"level":"info","message":"Servidor ejecutándose en el puerto 5003","timestamp":"2025-04-09T04:09:26.208Z"}
+{"level":"info","message":"Documentación API disponible en http://localhost:5003/api-docs","timestamp":"2025-04-09T04:09:26.210Z"}
+{"level":"info","message":"Conexión a MongoDB establecida en mongodb://127.0.0.1:27017/ddsbedrocl","timestamp":"2025-04-09T04:10:06.404Z"}
+{"level":"info","message":"Servidor ejecutándose en el puerto 5002","timestamp":"2025-04-09T04:10:06.445Z"}
+{"level":"info","message":"Documentación API disponible en http://localhost:5002/api-docs","timestamp":"2025-04-09T04:10:06.446Z"}
+{"level":"info","message":"Conexión a MongoDB establecida en mongodb://127.0.0.1:27017/ddsbedrocl","timestamp":"2025-04-09T04:10:06.632Z"}
+{"level":"warn","message":"Puerto 5002 en uso, intentando con puerto alternativo...","timestamp":"2025-04-09T04:10:06.645Z"}
+{"level":"info","message":"Servidor ejecutándose en el puerto 5002","timestamp":"2025-04-09T04:10:06.652Z"}
+{"level":"info","message":"Documentación API disponible en http://localhost:5002/api-docs","timestamp":"2025-04-09T04:10:06.656Z"}
+{"level":"info","message":"Servidor ejecutándose en el puerto 5003","timestamp":"2025-04-09T04:10:06.659Z"}
+{"level":"info","message":"Documentación API disponible en http://localhost:5003/api-docs","timestamp":"2025-04-09T04:10:06.660Z"}
+{"level":"info","message":"Conexión a MongoDB establecida en mongodb://127.0.0.1:27017/ddsbedrocl","timestamp":"2025-04-09T04:12:03.101Z"}
+{"level":"info","message":"Servidor ejecutándose en el puerto 5002","timestamp":"2025-04-09T04:12:03.118Z"}
+{"level":"info","message":"Documentación API disponible en http://localhost:5002/api-docs","timestamp":"2025-04-09T04:12:03.119Z"}
+{"level":"info","message":"Conexión a MongoDB establecida en mongodb://127.0.0.1:27017/ddsbedrocl","timestamp":"2025-04-09T04:12:03.361Z"}
+{"level":"warn","message":"Puerto 5002 en uso, intentando con puerto alternativo...","timestamp":"2025-04-09T04:12:03.393Z"}
+{"level":"info","message":"Servidor ejecutándose en el puerto 5002","timestamp":"2025-04-09T04:12:03.444Z"}
+{"level":"info","message":"Documentación API disponible en http://localhost:5002/api-docs","timestamp":"2025-04-09T04:12:03.459Z"}
+{"level":"info","message":"Servidor ejecutándose en el puerto 5003","timestamp":"2025-04-09T04:12:03.462Z"}
+{"level":"info","message":"Documentación API disponible en http://localhost:5003/api-docs","timestamp":"2025-04-09T04:12:03.464Z"}
+{"level":"info","message":"Conexión a MongoDB establecida en mongodb://127.0.0.1:27017/ddsbedrocl","timestamp":"2025-04-09T04:32:51.634Z"}
+{"level":"info","message":"Servidor ejecutándose en el puerto 5002","timestamp":"2025-04-09T04:32:51.656Z"}
+{"level":"info","message":"Documentación API disponible en http://localhost:5002/api-docs","timestamp":"2025-04-09T04:32:51.660Z"}
+{"level":"info","message":"Conexión a MongoDB establecida en mongodb://127.0.0.1:27017/ddsbedrocl","timestamp":"2025-04-09T04:32:52.048Z"}
+{"level":"warn","message":"Puerto 5002 en uso, intentando con puerto alternativo...","timestamp":"2025-04-09T04:32:52.068Z"}
+{"level":"info","message":"Servidor ejecutándose en el puerto 5002","timestamp":"2025-04-09T04:32:52.082Z"}
+{"level":"info","message":"Documentación API disponible en http://localhost:5002/api-docs","timestamp":"2025-04-09T04:32:52.083Z"}
+{"level":"info","message":"Servidor ejecutándose en el puerto 5003","timestamp":"2025-04-09T04:32:52.085Z"}
+{"level":"info","message":"Documentación API disponible en http://localhost:5003/api-docs","timestamp":"2025-04-09T04:32:52.085Z"}
+{"level":"info","message":"Conexión a MongoDB establecida en mongodb://127.0.0.1:27017/ddsbedrocl","timestamp":"2025-04-09T04:34:39.668Z"}
+{"level":"info","message":"Servidor ejecutándose en el puerto 5002","timestamp":"2025-04-09T04:34:39.690Z"}
+{"level":"info","message":"Documentación API disponible en http://localhost:5002/api-docs","timestamp":"2025-04-09T04:34:39.691Z"}
+{"level":"info","message":"Conexión a MongoDB establecida en mongodb://127.0.0.1:27017/ddsbedrocl","timestamp":"2025-04-09T04:34:39.679Z"}
+{"level":"warn","message":"Puerto 5002 en uso, intentando con puerto alternativo...","timestamp":"2025-04-09T04:34:39.711Z"}
+{"level":"info","message":"Servidor ejecutándose en el puerto 5002","timestamp":"2025-04-09T04:34:39.723Z"}
+{"level":"info","message":"Documentación API disponible en http://localhost:5002/api-docs","timestamp":"2025-04-09T04:34:39.725Z"}
+{"level":"info","message":"Servidor ejecutándose en el puerto 5003","timestamp":"2025-04-09T04:34:39.726Z"}
+{"level":"info","message":"Documentación API disponible en http://localhost:5003/api-docs","timestamp":"2025-04-09T04:34:39.730Z"}
+{"level":"info","message":"Conexión a MongoDB establecida en mongodb://127.0.0.1:27017/ddsbedrocl","timestamp":"2025-04-09T04:35:28.385Z"}
+{"level":"info","message":"Servidor ejecutándose en el puerto 5002","timestamp":"2025-04-09T04:35:28.413Z"}
+{"level":"info","message":"Documentación API disponible en http://localhost:5002/api-docs","timestamp":"2025-04-09T04:35:28.421Z"}
+{"level":"info","message":"Conexión a MongoDB establecida en mongodb://127.0.0.1:27017/ddsbedrocl","timestamp":"2025-04-09T04:35:35.574Z"}
+{"level":"warn","message":"Puerto 5002 en uso, intentando con puerto alternativo...","timestamp":"2025-04-09T04:35:35.682Z"}
+{"level":"info","message":"Servidor ejecutándose en el puerto 5002","timestamp":"2025-04-09T04:35:35.718Z"}
+{"level":"info","message":"Documentación API disponible en http://localhost:5002/api-docs","timestamp":"2025-04-09T04:35:35.763Z"}
+{"level":"info","message":"Servidor ejecutándose en el puerto 5003","timestamp":"2025-04-09T04:35:35.770Z"}
+{"level":"info","message":"Documentación API disponible en http://localhost:5003/api-docs","timestamp":"2025-04-09T04:35:35.775Z"}
+{"level":"info","message":"Conexión a MongoDB establecida en mongodb://127.0.0.1:27017/ddsbedrocl","timestamp":"2025-04-09T14:44:42.111Z"}
+{"level":"info","message":"Servidor ejecutándose en el puerto 5002","timestamp":"2025-04-09T14:44:42.124Z"}
+{"level":"info","message":"Documentación API disponible en http://localhost:5002/api-docs","timestamp":"2025-04-09T14:44:42.125Z"}
+{"level":"info","message":"Conexión a MongoDB establecida en mongodb://127.0.0.1:27017/ddsbedrocl","timestamp":"2025-04-09T14:51:40.004Z"}
+{"level":"warn","message":"Puerto 5002 en uso, intentando con puerto alternativo...","timestamp":"2025-04-09T14:51:40.016Z"}
+{"level":"info","message":"Servidor ejecutándose en el puerto 5002","timestamp":"2025-04-09T14:51:40.022Z"}
+{"level":"info","message":"Documentación API disponible en http://localhost:5002/api-docs","timestamp":"2025-04-09T14:51:40.023Z"}
+{"level":"info","message":"Servidor ejecutándose en el puerto 5003","timestamp":"2025-04-09T14:51:40.024Z"}
+{"level":"info","message":"Documentación API disponible en http://localhost:5003/api-docs","timestamp":"2025-04-09T14:51:40.025Z"}
+{"level":"info","message":"Conexión a MongoDB establecida en mongodb://127.0.0.1:27017/ddsbedrocl","timestamp":"2025-04-09T16:26:00.119Z"}
+{"level":"info","message":"Servidor ejecutándose en el puerto 5002","timestamp":"2025-04-09T16:26:00.126Z"}
+{"level":"info","message":"Documentación API disponible en http://localhost:5002/api-docs","timestamp":"2025-04-09T16:26:00.127Z"}
+{"level":"info","message":"Conexión a MongoDB establecida en mongodb://127.0.0.1:27017/ddsbedrocl","timestamp":"2025-04-09T16:48:09.507Z"}
+{"level":"info","message":"Servidor ejecutándose en el puerto 5002","timestamp":"2025-04-09T16:48:09.523Z"}
+{"level":"info","message":"Documentación API disponible en http://localhost:5002/api-docs","timestamp":"2025-04-09T16:48:09.524Z"}
+{"level":"info","message":"Conexión a MongoDB establecida en mongodb://127.0.0.1:27017/ddsbedrocl","timestamp":"2025-04-09T16:51:14.270Z"}
+{"level":"info","message":"Servidor ejecutándose en el puerto 5002","timestamp":"2025-04-09T16:51:14.294Z"}
+{"level":"info","message":"Documentación API disponible en http://localhost:5002/api-docs","timestamp":"2025-04-09T16:51:14.296Z"}
+{"level":"info","message":"Conexión a MongoDB establecida en mongodb://127.0.0.1:27017/ddsbedrocl","timestamp":"2025-04-09T17:46:10.562Z"}
+{"level":"info","message":"Servidor ejecutándose en el puerto 5002","timestamp":"2025-04-09T17:46:10.569Z"}
+{"level":"info","message":"Documentación API disponible en http://localhost:5002/api-docs","timestamp":"2025-04-09T17:46:10.569Z"}
+{"level":"info","message":"Conexión a MongoDB establecida en mongodb://127.0.0.1:27017/ddsbedrocl","timestamp":"2025-04-09T17:51:16.878Z"}
+{"level":"info","message":"Servidor ejecutándose en el puerto 5002","timestamp":"2025-04-09T17:51:16.893Z"}
+{"level":"info","message":"Documentación API disponible en http://localhost:5002/api-docs","timestamp":"2025-04-09T17:51:16.895Z"}
+{"level":"error","message":"Error: Error al enviar el email de verificación","timestamp":"2025-04-09T17:59:37.103Z"}
+{"level":"debug","message":"Error: Error al enviar el email de verificación\n    at C:\\Users\\inspe\\OneDrive\\Escritorio\\whass\\server\\controllers\\authController.js:74:17\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)","timestamp":"2025-04-09T17:59:37.116Z"}
+{"level":"error","message":"Error: E11000 duplicate key error collection: ddsbedrocl.users index: username_1 dup key: { username: \"ddslasso\" }","timestamp":"2025-04-09T17:59:43.842Z"}
+{"level":"debug","message":"MongoServerError: E11000 duplicate key error collection: ddsbedrocl.users index: username_1 dup key: { username: \"ddslasso\" }\n    at C:\\Users\\inspe\\OneDrive\\Escritorio\\whass\\node_modules\\mongodb\\lib\\operations\\insert.js:50:33\n    at C:\\Users\\inspe\\OneDrive\\Escritorio\\whass\\node_modules\\mongodb\\lib\\operations\\command.js:84:64\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)","timestamp":"2025-04-09T17:59:43.843Z"}
+{"level":"info","message":"Conexión a MongoDB establecida en mongodb://127.0.0.1:27017/ddsbedrocl","timestamp":"2025-04-09T18:04:31.519Z"}
+{"level":"info","message":"Servidor ejecutándose en el puerto 5002","timestamp":"2025-04-09T18:04:31.531Z"}
+{"level":"info","message":"Documentación API disponible en http://localhost:5002/api-docs","timestamp":"2025-04-09T18:04:31.532Z"}
+2025-04-09 13:06:03 [ERROR] Error al enviar email de verificación: Invalid login: 535 5.7.0 Invalid credentials Error: Invalid login: 535 5.7.0 Invalid credentials
+    at SMTPConnection._formatError (C:\Users\inspe\OneDrive\Escritorio\whass\node_modules\nodemailer\lib\smtp-connection\index.js:809:19)
+    at SMTPConnection._actionAUTHComplete (C:\Users\inspe\OneDrive\Escritorio\whass\node_modules\nodemailer\lib\smtp-connection\index.js:1588:34)
+    at SMTPConnection.<anonymous> (C:\Users\inspe\OneDrive\Escritorio\whass\node_modules\nodemailer\lib\smtp-connection\index.js:556:26)
+    at SMTPConnection._processResponse (C:\Users\inspe\OneDrive\Escritorio\whass\node_modules\nodemailer\lib\smtp-connection\index.js:993:20)
+    at SMTPConnection._onData (C:\Users\inspe\OneDrive\Escritorio\whass\node_modules\nodemailer\lib\smtp-connection\index.js:774:14)
+    at SMTPConnection._onSocketData (C:\Users\inspe\OneDrive\Escritorio\whass\node_modules\nodemailer\lib\smtp-connection\index.js:195:44)
+    at TLSSocket.emit (node:events:518:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+2025-04-09 13:06:03 [ERROR] Error en registro: secretOrPrivateKey must have a value Error: secretOrPrivateKey must have a value
+    at module.exports [as sign] (C:\Users\inspe\OneDrive\Escritorio\whass\node_modules\jsonwebtoken\sign.js:111:20)
+    at generateToken (C:\Users\inspe\OneDrive\Escritorio\whass\server\utils\tokenManager.js:17:14)
+    at exports.register (C:\Users\inspe\OneDrive\Escritorio\whass\server\controllers\authController.js:80:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+{"level":"info","message":"Conexión a MongoDB establecida en mongodb://127.0.0.1:27017/ddsbedrocl","timestamp":"2025-04-09T20:15:24.691Z"}
+{"level":"warn","message":"Puerto 5002 en uso, intentando con puerto alternativo...","timestamp":"2025-04-09T20:15:24.708Z"}
+{"level":"info","message":"Servidor ejecutándose en el puerto 5002","timestamp":"2025-04-09T20:15:24.713Z"}
+{"level":"info","message":"Documentación API disponible en http://localhost:5002/api-docs","timestamp":"2025-04-09T20:15:24.714Z"}
+{"level":"info","message":"Servidor ejecutándose en el puerto 5003","timestamp":"2025-04-09T20:15:24.715Z"}
+{"level":"info","message":"Documentación API disponible en http://localhost:5003/api-docs","timestamp":"2025-04-09T20:15:24.715Z"}

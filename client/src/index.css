@@ -1,0 +1,148 @@
+/* Estilos personalizados para la aplicación */
+.feature-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: var(--primary-color-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  color: var(--primary-color);
+}
+
+.minecraft-bg {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), url('https://i.imgur.com/UMnw0tM.jpg');
+  background-size: cover;
+  background-position: center;
+  color: white;
+}
+
+.minecraft-font {
+  font-family: 'Minecraft', 'Segoe UI', sans-serif;
+  letter-spacing: 1px;
+}
+
+/* Animaciones y hover effects */
+.btn {
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(var(--primary-rgb), 0.3);
+}
+
+.card {
+  transition: all 0.3s ease;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para los testimoniales */
+.testimonial-rating i {
+  color: #FFD700;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+  .feature-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .minecraft-bg {
+    padding: 2rem 0;
+  }
+}
+
+/* Variables CSS para personalización consistente */
+:root {
+  --primary-color: #4CAF50;
+  --primary-color-light: rgba(76, 175, 80, 0.1);
+  --primary-rgb: 76, 175, 80;
+  --secondary-color: #8BC34A;
+  --dark-color: #333333;
+  --light-color: #f8f9fa;
+}
+
+/* Estilos globales */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-image: url('https://images.alphacoders.com/115/1159785.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  color: white;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* Clase para el fondo de Minecraft */
+.minecraft-bg {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), url('https://i.imgur.com/UMnw0tM.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: white;
+}
+
+/* Clase para la fuente de Minecraft */
+.minecraft-font {
+  font-family: 'Minecraft', 'Segoe UI', sans-serif;
+  letter-spacing: 1px;
+}
+
+/* Animaciones y efectos hover */
+.btn {
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  box-shadow: 0 10px 20px rgba(76, 175, 80, 0.3);
+  transform: translateY(-3px);
+}
+
+/* Estilos para las tarjetas de planes */
+.plan-card {
+  transition: all 0.3s ease;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.plan-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilos para los iconos de características */
+.feature-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: rgba(76, 175, 80, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  color: #4caf50;
+} 

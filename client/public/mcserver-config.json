@@ -1,0 +1,73 @@
+{
+  "serverInfo": {
+    "name": "WhassDemo",
+    "version": "1.20.1",
+    "status": "online",
+    "ip": "demo.whass.net",
+    "port": 25565,
+    "online": 12,
+    "maxPlayers": 30,
+    "uptime": "99.9%"
+  },
+  "resources": {
+    "cpu": "2 vCores",
+    "ram": "4GB",
+    "storage": "20GB SSD NVMe",
+    "processor": "Ryzen 5 5600X"
+  },
+  "benefits": [
+    "Panel de control intuitivo",
+    "Backups automáticos diarios",
+    "Instalación con un solo clic",
+    "Protección contra DDoS",
+    "Soporte técnico 24/7",
+    "Latencia ultra baja"
+  ],
+  "plugins": [
+    {
+      "name": "EssentialsX",
+      "description": "Conjunto de comandos y funciones esenciales para cualquier servidor",
+      "version": "2.19.7"
+    },
+    {
+      "name": "WorldEdit",
+      "description": "Herramienta de edición de mundo para construir y modificar terrenos rápidamente",
+      "version": "7.2.10"
+    },
+    {
+      "name": "LuckPerms",
+      "description": "Sistema de permisos avanzado y fácil de usar",
+      "version": "5.4.40"
+    },
+    {
+      "name": "CoreProtect",
+      "description": "Solución de protección contra griefing con capacidad de rollback",
+      "version": "21.2"
+    },
+    {
+      "name": "Dynmap",
+      "description": "Mapa interactivo del mundo del servidor en tiempo real",
+      "version": "3.4"
+    }
+  ],
+  "properties": {
+    "gamemode": "survival",
+    "difficulty": "normal",
+    "pvp": true,
+    "whitelist": false,
+    "spawn-protection": 16,
+    "max-tick-time": 60000,
+    "view-distance": 10,
+    "max-build-height": 256,
+    "allow-nether": true,
+    "allow-flight": false
+  },
+  "installationSteps": [
+    "Regístrate en Whass y selecciona un plan de hosting",
+    "Ingresa al panel de control y haz clic en 'Crear servidor'",
+    "Selecciona la versión de Minecraft que deseas instalar",
+    "Configura el nombre de tu servidor y recursos asignados",
+    "Haz clic en 'Instalar' y espera unos minutos",
+    "¡Tu servidor ya está listo para jugar! Comparte la IP con tus amigos"
+  ]
+} 

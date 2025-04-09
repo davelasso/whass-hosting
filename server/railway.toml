@@ -1,0 +1,31 @@
+[build]
+builder = "nixpacks"
+buildCommand = "npm install"
+
+[deploy]
+startCommand = "npm start"
+healthcheckPath = "/api/health"
+healthcheckTimeout = 100
+restartPolicyType = "on-failure"
+restartPolicyMaxRetries = 10
+
+[env]
+NODE_ENV = "production"
+PORT = "5002"
+MONGODB_URI = "mongodb+srv://your-mongodb-uri"
+JWT_SECRET = "your-jwt-secret"
+
+[[services]]
+name = "api"
+envs = [
+  "MONGODB_URI",
+  "JWT_SECRET",
+  "JWT_EXPIRE",
+  "SMTP_HOST",
+  "SMTP_PORT",
+  "SMTP_USER",
+  "SMTP_PASS",
+  "STRIPE_SECRET_KEY",
+  "STRIPE_WEBHOOK_SECRET",
+  "CLIENT_URL"
+] 

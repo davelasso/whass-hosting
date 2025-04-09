@@ -1,0 +1,33 @@
+{"level":"error","message":"Error al conectar a MongoDB: connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017","timestamp":"2025-04-08T19:27:00.410Z"}
+{"level":"error","message":"Error al conectar a MongoDB: connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017","timestamp":"2025-04-08T20:56:30.847Z"}
+{"level":"error","message":"Error al conectar a MongoDB: connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017","timestamp":"2025-04-08T21:00:57.974Z"}
+{"level":"error","message":"Error al conectar a MongoDB: querySrv ENOTFOUND _mongodb._tcp.cluster0.mongodb.net","timestamp":"2025-04-08T21:02:10.381Z"}
+{"level":"error","message":"Error al conectar a MongoDB: connect ECONNREFUSED 127.0.0.1:27017","timestamp":"2025-04-08T21:07:53.491Z"}
+{"level":"error","message":"ERROR NO MANEJADO: EXCEPCIÓN NO CAPTURADA","timestamp":"2025-04-08T21:18:41.019Z"}
+{"level":"error","message":"ERROR NO MANEJADO: EXCEPCIÓN NO CAPTURADA","timestamp":"2025-04-08T21:23:30.336Z"}
+{"level":"error","message":"ERROR NO MANEJADO: EXCEPCIÓN NO CAPTURADA","timestamp":"2025-04-08T21:30:23.860Z"}
+{"level":"error","message":"ERROR NO MANEJADO: EXCEPCIÓN NO CAPTURADA","timestamp":"2025-04-09T00:01:27.496Z"}
+{"level":"error","message":"ERROR NO MANEJADO: EXCEPCIÓN NO CAPTURADA","timestamp":"2025-04-09T00:55:40.166Z"}
+{"level":"error","message":"ERROR NO MANEJADO: EXCEPCIÓN NO CAPTURADA","timestamp":"2025-04-09T02:39:39.328Z"}
+{"level":"error","message":"ERROR NO MANEJADO: EXCEPCIÓN NO CAPTURADA","timestamp":"2025-04-09T02:43:22.085Z"}
+{"level":"error","message":"ERROR NO MANEJADO: EXCEPCIÓN NO CAPTURADA","timestamp":"2025-04-09T02:43:56.151Z"}
+{"level":"error","message":"ERROR NO MANEJADO: EXCEPCIÓN NO CAPTURADA","timestamp":"2025-04-09T02:45:13.810Z"}
+{"level":"error","message":"Error: No estás autorizado para acceder a esta ruta","timestamp":"2025-04-09T03:27:02.851Z"}
+{"level":"error","message":"Error: Error al enviar el email de verificación","timestamp":"2025-04-09T17:59:37.103Z"}
+{"level":"error","message":"Error: E11000 duplicate key error collection: ddsbedrocl.users index: username_1 dup key: { username: \"ddslasso\" }","timestamp":"2025-04-09T17:59:43.842Z"}
+2025-04-09 13:06:03 [ERROR] Error al enviar email de verificación: Invalid login: 535 5.7.0 Invalid credentials Error: Invalid login: 535 5.7.0 Invalid credentials
+    at SMTPConnection._formatError (C:\Users\inspe\OneDrive\Escritorio\whass\node_modules\nodemailer\lib\smtp-connection\index.js:809:19)
+    at SMTPConnection._actionAUTHComplete (C:\Users\inspe\OneDrive\Escritorio\whass\node_modules\nodemailer\lib\smtp-connection\index.js:1588:34)
+    at SMTPConnection.<anonymous> (C:\Users\inspe\OneDrive\Escritorio\whass\node_modules\nodemailer\lib\smtp-connection\index.js:556:26)
+    at SMTPConnection._processResponse (C:\Users\inspe\OneDrive\Escritorio\whass\node_modules\nodemailer\lib\smtp-connection\index.js:993:20)
+    at SMTPConnection._onData (C:\Users\inspe\OneDrive\Escritorio\whass\node_modules\nodemailer\lib\smtp-connection\index.js:774:14)
+    at SMTPConnection._onSocketData (C:\Users\inspe\OneDrive\Escritorio\whass\node_modules\nodemailer\lib\smtp-connection\index.js:195:44)
+    at TLSSocket.emit (node:events:518:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+2025-04-09 13:06:03 [ERROR] Error en registro: secretOrPrivateKey must have a value Error: secretOrPrivateKey must have a value
+    at module.exports [as sign] (C:\Users\inspe\OneDrive\Escritorio\whass\node_modules\jsonwebtoken\sign.js:111:20)
+    at generateToken (C:\Users\inspe\OneDrive\Escritorio\whass\server\utils\tokenManager.js:17:14)
+    at exports.register (C:\Users\inspe\OneDrive\Escritorio\whass\server\controllers\authController.js:80:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)

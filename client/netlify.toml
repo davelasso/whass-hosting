@@ -1,14 +1,12 @@
 [build]
-  command = "npm run build"
+  base = "client"
   publish = "dist"
+  command = "npm run build"
 
 [build.environment]
-  NODE_VERSION = "18"
+  VITE_API_URL = "https://whass-api.railway.app"
 
 [[redirects]]
   from = "/*"
   to = "/index.html"
-  status = 200
-  
-[template.environment]
-  VITE_API_URL = "https://whass-backend.onrender.com/api" 
+  status = 200 

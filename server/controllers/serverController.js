@@ -321,8 +321,8 @@ const serverTypes = [
 
 // Obtener tipos de servidores disponibles
 exports.getServerTypes = (req, res) => {
-  res.status(200).json({
-    success: true,
+    res.status(200).json({
+      success: true,
     count: serverTypes.length,
     data: serverTypes
   });
@@ -367,7 +367,7 @@ exports.getHostingPlans = (req, res) => {
 // Obtener todos los servidores
 exports.getServers = (req, res) => {
   res.status(200).json({
-    success: true,
+      success: true,
     count: demoServers.length,
     data: demoServers
   });
@@ -470,7 +470,7 @@ exports.createServer = (req, res) => {
   demoServers.push(newServer);
   
   res.status(201).json({
-    success: true,
+      success: true,
     message: 'Servidor creado exitosamente',
     data: newServer
   });
@@ -526,12 +526,12 @@ exports.updateServer = (req, res) => {
 // Eliminar un servidor
 exports.deleteServer = (req, res) => {
   const { id } = req.params;
-  
-  res.status(200).json({
-    success: true,
+
+    res.status(200).json({
+      success: true,
     message: 'Servidor eliminado exitosamente',
-    data: {}
-  });
+      data: {}
+    });
 };
 
 // Iniciar un servidor
@@ -592,9 +592,9 @@ exports.getConsoleLogs = (req, res) => {
     { timestamp: new Date(Date.now() - 30000), level: 'INFO', message: 'Usuario3 se ha conectado' },
     { timestamp: new Date(), level: 'INFO', message: 'Servidor funcionando correctamente' }
   ];
-  
-  res.status(200).json({
-    success: true,
+
+      res.status(200).json({
+        success: true,
     count: logs.length,
     data: logs
   });
@@ -685,9 +685,9 @@ exports.getServerPlugins = (req, res) => {
     { id: 'coreprotect', name: 'CoreProtect', version: '21.2', enabled: true },
     { id: 'dynmap', name: 'Dynmap', version: '3.4', enabled: false }
   ];
-  
-  res.status(200).json({
-    success: true,
+
+      res.status(200).json({
+        success: true,
     count: plugins.length,
     data: plugins
   });
@@ -699,7 +699,7 @@ exports.installPlugin = (req, res) => {
   const { pluginId, version } = req.body;
   
   res.status(200).json({
-    success: true,
+          success: true,
     message: 'Plugin instalado exitosamente',
     data: {
       id: pluginId,
@@ -750,9 +750,9 @@ exports.getServerBackups = (req, res) => {
     { id: 'backup-6', createdAt: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000), size: '145MB', type: 'manual' },
     { id: 'backup-7', createdAt: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000), size: '150MB', type: 'auto' }
   ];
-  
-  res.status(200).json({
-    success: true,
+
+      res.status(200).json({
+        success: true,
     count: backups.length,
     data: backups
   });
@@ -796,9 +796,9 @@ exports.restoreBackup = (req, res) => {
 // Eliminar backup del servidor
 exports.deleteBackup = (req, res) => {
   const { id, backupId } = req.params;
-  
-  res.status(200).json({
-    success: true,
+
+      res.status(200).json({
+        success: true,
     message: 'Backup eliminado exitosamente',
     data: {}
   });
@@ -808,9 +808,9 @@ exports.deleteBackup = (req, res) => {
 // @route   GET /api/servers/:id/logs
 // @access  Private
 exports.getServerLogs = asyncHandler(async (req, res, next) => {
-  const server = await Server.findById(req.params.id);
+    const server = await Server.findById(req.params.id);
 
-  if (!server) {
+    if (!server) {
     return next(new ErrorResponse(`Servidor no encontrado con ID ${req.params.id}`, 404));
   }
 
@@ -821,9 +821,9 @@ exports.getServerLogs = asyncHandler(async (req, res, next) => {
 
   try {
     const logs = await dockerService.getServerLogs(server);
-    
-    res.status(200).json({
-      success: true,
+
+      res.status(200).json({
+        success: true,
       data: logs
     });
   } catch (err) {
@@ -836,9 +836,9 @@ exports.getServerLogs = asyncHandler(async (req, res, next) => {
 // @access  Private
 exports.executeCommand = asyncHandler(async (req, res, next) => {
   const { command } = req.body;
-  const server = await Server.findById(req.params.id);
+    const server = await Server.findById(req.params.id);
 
-  if (!server) {
+    if (!server) {
     return next(new ErrorResponse(`Servidor no encontrado con ID ${req.params.id}`, 404));
   }
 
@@ -858,9 +858,9 @@ exports.executeCommand = asyncHandler(async (req, res, next) => {
 
   try {
     const result = await dockerService.executeCommand(server, command);
-    
-    res.status(200).json({
-      success: true,
+
+      res.status(200).json({
+        success: true,
       data: result
     });
   } catch (err) {
@@ -872,9 +872,9 @@ exports.executeCommand = asyncHandler(async (req, res, next) => {
 // @route   GET /api/servers/:id/stats
 // @access  Private
 exports.getServerStats = asyncHandler(async (req, res, next) => {
-  const server = await Server.findById(req.params.id);
+    const server = await Server.findById(req.params.id);
 
-  if (!server) {
+    if (!server) {
     return next(new ErrorResponse(`Servidor no encontrado con ID ${req.params.id}`, 404));
   }
 
@@ -884,7 +884,7 @@ exports.getServerStats = asyncHandler(async (req, res, next) => {
   }
 
   // Solo obtener stats si el servidor está en ejecución
-  if (server.status !== 'running') {
+    if (server.status !== 'running') {
     return res.status(200).json({
       success: true,
       data: {
@@ -913,9 +913,9 @@ exports.getServerStats = asyncHandler(async (req, res, next) => {
         max: 20
       }
     };
-    
-    res.status(200).json({
-      success: true,
+
+      res.status(200).json({
+        success: true,
       data: stats
     });
   } catch (err) {

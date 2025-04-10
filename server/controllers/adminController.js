@@ -179,7 +179,7 @@ exports.getSystemLogs = asyncHandler(async (req, res, next) => {
   const logs = await SystemLog.find(filter)
     .sort('-timestamp')
     .limit(parseInt(limit) || 100);
-
+    
     res.status(200).json({
       success: true,
     count: logs.length,

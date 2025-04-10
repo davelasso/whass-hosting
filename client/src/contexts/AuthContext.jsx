@@ -171,16 +171,17 @@ export const AuthProvider = ({ children }) => {
 
   // Función para verificar el correo electrónico
   const verifyEmail = async (token) => {
+    setLoading(true);
     try {
-      setError(null);
-      const res = await axios.get(`/api/auth/verify-email/${token}`);
-      
-      if (res.data.success) {
-        return true;
-      }
+      const response = await axios.get(`/api/auth/verify-email/${token}`);
+      setLoading(false);
+      return response.data;
     } catch (err) {
-      setError(err.response?.data?.message || 'Error al verificar el correo electrónico');
-      return false;
+      setLoading(false);
+      setError(
+        err.response?.data?.message || 'Error al verificar el email'
+      );
+      throw err;
     }
   };
 

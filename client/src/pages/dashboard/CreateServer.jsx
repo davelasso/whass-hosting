@@ -22,14 +22,18 @@ import {
   CircularProgress,
   Card,
   CardContent,
-  CardMedia
+  CardMedia,
+  FormControlLabel,
+  Switch,
+  Chip
 } from '@mui/material';
 import {
   Storage as StorageIcon,
   Memory as MemoryIcon,
   Save as SaveIcon,
   ArrowBack as ArrowBackIcon,
-  ArrowForward as ArrowForwardIcon
+  ArrowForward as ArrowForwardIcon,
+  Check as CheckIcon
 } from '@mui/icons-material';
 import axios from 'axios';
 import { useAuth } from '../../contexts/AuthContext';
@@ -79,28 +83,82 @@ const ServerTypeCard = ({ type, title, description, image, selected, onClick }) 
         cursor: 'pointer',
         border: selected ? `2px solid ${theme.palette.primary.main}` : '1px solid transparent',
         transition: 'all 0.3s ease',
+        position: 'relative',
+        overflow: 'visible',
         '&:hover': {
           transform: 'translateY(-5px)',
-          boxShadow: 4
-        }
+          boxShadow: 8
+        },
+        '&::before': type === 'bedrock' ? {
+          content: '""',
+          position: 'absolute',
+          top: -15,
+          right: -15,
+          width: 60,
+          height: 60,
+          background: 'url(https://www.minecraft.net/content/dam/games/minecraft/logos/Xbox_Game_Studios_Logo.png)',
+          backgroundSize: 'contain',
+          backgroundRepeat: 'no-repeat',
+          transform: 'rotate(15deg)',
+          zIndex: 10,
+          filter: 'drop-shadow(0px 0px 5px rgba(0,0,0,0.3))'
+        } : {}
       }}
       onClick={() => onClick(type)}
       elevation={selected ? 4 : 1}
     >
       <CardMedia
         component="img"
-        height="140"
+        height="160"
         image={image}
         alt={title}
+        sx={{
+          filter: 'brightness(0.9)',
+          transition: 'all 0.3s ease',
+          '&:hover': {
+            filter: 'brightness(1)'
+          }
+        }}
       />
-      <CardContent sx={{ flexGrow: 1 }}>
-        <Typography gutterBottom variant="h5" component="div">
+      <CardContent sx={{ 
+        flexGrow: 1,
+        background: selected ? `linear-gradient(135deg, ${theme.palette.primary.light}22, transparent)` : 'transparent'
+      }}>
+        <Typography gutterBottom variant="h5" component="div" fontWeight="bold">
           {title}
         </Typography>
         <Typography variant="body2" color="text.secondary">
           {description}
         </Typography>
+        {type === 'bedrock' && (
+          <Box sx={{ mt: 2, display: 'flex', alignItems: 'center', gap: 1 }}>
+            <img src="https://www.minecraft.net/content/dam/games/minecraft/logos/Xbox_Game_Studios_Logo.png" alt="Xbox" height="20" />
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Steam_icon_logo.svg/512px-Steam_icon_logo.svg.png" alt="Steam" height="20" />
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Nintendo_Switch_Logo.svg/1024px-Nintendo_Switch_Logo.svg.png" alt="Switch" height="15" />
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/PlayStation_logo.svg/1280px-PlayStation_logo.svg.png" alt="PlayStation" height="17" />
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Google_Play_arrow_logo.svg/1024px-Google_Play_arrow_logo.svg.png" alt="Android" height="20" />
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/505px-Apple_logo_black.svg.png" alt="iOS" height="20" />
+          </Box>
+        )}
       </CardContent>
+      {selected && (
+        <Box sx={{ 
+          position: 'absolute', 
+          top: -10, 
+          left: -10, 
+          bgcolor: theme.palette.primary.main,
+          color: 'white',
+          borderRadius: '50%',
+          width: 30,
+          height: 30,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          boxShadow: 2
+        }}>
+          <CheckIcon fontSize="small" />
+        </Box>
+      )}
     </Card>
   );
 };
@@ -130,36 +188,64 @@ const CreateServer = () => {
       difficulty: 'normal',
       gamemode: 'survival',
       pvp: true,
-      commandBlocks: false
+      commandBlocks: false,
+      crossplay: true,                // Habilitado por defecto para Bedrock
+      customNetwork: false,           // Red personalizada (solo Bedrock)
+      customNetworkName: '',          // Nombre de la red personalizada
+      allowAllFriends: true,          // Permitir a todos los amigos unirse (solo Bedrock)
+      enableResourcePacks: true       // Permitir paquetes de recursos (ambos)
     }
   });
   
   // Estados para las versiones disponibles
-  const [versions, setVersions] = useState({
-    java: [],
-    bedrock: []
-  });
+  const [versions, setVersions] = useState([]);
+  const [serverTypes, setServerTypes] = useState([]);
   
   // Estado para errores y carga
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   
-  // Cargar versiones disponibles
+  // Cargar tipos de servidores
+  useEffect(() => {
+    const fetchServerTypes = async () => {
+      try {
+        setLoading(true);
+        const response = await axios.get('/api/servers/types');
+        if (response.data.success) {
+          setServerTypes(response.data.data);
+        }
+      } catch (err) {
+        console.error('Error al cargar tipos de servidores:', err);
+        setError('No se pudieron cargar los tipos de servidores disponibles');
+      } finally {
+        setLoading(false);
+      }
+    };
+    
+    fetchServerTypes();
+  }, []);
+  
+  // Cargar versiones cuando se selecciona un tipo de servidor
   useEffect(() => {
     const fetchVersions = async () => {
+      if (!serverData.type) return;
+      
       try {
-        const response = await axios.get('/api/servers/versions');
+        setLoading(true);
+        const response = await axios.get(`/api/servers/versions?type=${serverData.type}`);
         if (response.data.success) {
           setVersions(response.data.data);
         }
       } catch (err) {
         console.error('Error al cargar versiones:', err);
         setError('No se pudieron cargar las versiones disponibles');
+      } finally {
+        setLoading(false);
       }
     };
     
     fetchVersions();
-  }, []);
+  }, [serverData.type]);
   
   // Manejar cambios en los campos del formulario
   const handleChange = (e) => {
@@ -279,26 +365,32 @@ const CreateServer = () => {
             </Typography>
             
             <Grid container spacing={3} sx={{ mt: 2 }}>
-              <Grid item xs={12} md={6}>
-                <ServerTypeCard
-                  type="java"
-                  title="Java Edition"
-                  description="Versión clásica de Minecraft para PC. Soporta mods, plugins y paquetes de recursos avanzados."
-                  image="https://www.minecraft.net/content/dam/games/minecraft/key-art/MC_Java_Edition_Key_Art.jpg"
-                  selected={serverData.type === 'java'}
-                  onClick={handleServerTypeSelect}
-                />
-              </Grid>
-              <Grid item xs={12} md={6}>
-                <ServerTypeCard
-                  type="bedrock"
-                  title="Bedrock Edition"
-                  description="Versión multiplataforma compatible con dispositivos móviles, consolas y Windows 10."
-                  image="https://www.minecraft.net/content/dam/games/minecraft/key-art/MC_Bedrock_Edition_Key_Art.jpg"
-                  selected={serverData.type === 'bedrock'}
-                  onClick={handleServerTypeSelect}
-                />
-              </Grid>
+              {serverTypes.map((type) => (
+                <Grid item xs={12} md={6} key={type.id}>
+                  <ServerTypeCard
+                    type={type.id}
+                    title={type.name}
+                    description={type.description}
+                    image={type.id === 'java' 
+                      ? "https://www.minecraft.net/content/dam/games/minecraft/key-art/MC_Java_Edition_Key_Art.jpg"
+                      : "https://www.minecraft.net/content/dam/games/minecraft/key-art/MC_Bedrock_Edition_Key_Art.jpg"}
+                    selected={serverData.type === type.id}
+                    onClick={handleServerTypeSelect}
+                  />
+                </Grid>
+              ))}
+              {serverTypes.length === 0 && !loading && (
+                <Grid item xs={12}>
+                  <Alert severity="warning">
+                    No se pudieron cargar los tipos de servidores. Por favor, intenta de nuevo más tarde.
+                  </Alert>
+                </Grid>
+              )}
+              {loading && (
+                <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'center' }}>
+                  <CircularProgress />
+                </Grid>
+              )}
             </Grid>
           </Box>
         );
@@ -330,8 +422,8 @@ const CreateServer = () => {
                 onChange={handleChange}
                 label="Versión"
               >
-                {serverData.type && versions[serverData.type]?.map((version) => (
-                  <MenuItem key={version} value={version}>{version}</MenuItem>
+                {versions.map((version) => (
+                  <MenuItem key={version.id} value={version.id}>{version.name}</MenuItem>
                 ))}
               </Select>
               {serverData.version === '' && (
@@ -392,6 +484,220 @@ const CreateServer = () => {
                   InputProps={{ inputProps: { min: 1, max: 100 } }}
                 />
               </Grid>
+              
+              {/* Opciones específicas para Bedrock */}
+              {serverData.type === 'bedrock' && (
+                <>
+                  <Grid item xs={12}>
+                    <Divider sx={{ my: 2 }} />
+                    <Typography variant="subtitle1" gutterBottom fontWeight="bold" color="primary">
+                      Opciones exclusivas de Bedrock Edition
+                    </Typography>
+                  </Grid>
+                  
+                  <Grid item xs={12}>
+                    <FormControlLabel
+                      control={
+                        <Switch
+                          checked={serverData.settings.crossplay}
+                          onChange={(e) => {
+                            setServerData({
+                              ...serverData,
+                              settings: {
+                                ...serverData.settings,
+                                crossplay: e.target.checked
+                              }
+                            });
+                          }}
+                          color="primary"
+                        />
+                      }
+                      label={
+                        <Box>
+                          <Typography variant="body1">Habilitar cross-play multiplataforma</Typography>
+                          <Typography variant="caption" color="text.secondary">
+                            Permite que jugadores de consolas, móviles y PC jueguen juntos
+                          </Typography>
+                        </Box>
+                      }
+                    />
+                  </Grid>
+                  
+                  <Grid item xs={12}>
+                    <FormControlLabel
+                      control={
+                        <Switch
+                          checked={serverData.settings.customNetwork}
+                          onChange={(e) => {
+                            setServerData({
+                              ...serverData,
+                              settings: {
+                                ...serverData.settings,
+                                customNetwork: e.target.checked
+                              }
+                            });
+                          }}
+                          color="primary"
+                        />
+                      }
+                      label={
+                        <Box>
+                          <Typography variant="body1">Crear red personalizada</Typography>
+                          <Typography variant="caption" color="text.secondary">
+                            Define un nombre para tu red de juego
+                          </Typography>
+                        </Box>
+                      }
+                    />
+                  </Grid>
+                  
+                  {serverData.settings.customNetwork && (
+                    <Grid item xs={12} sm={6}>
+                      <TextField
+                        fullWidth
+                        label="Nombre de la red"
+                        name="settings.customNetworkName"
+                        value={serverData.settings.customNetworkName}
+                        onChange={handleChange}
+                        margin="normal"
+                        helperText="Un nombre único para identificar tu red de juego"
+                      />
+                    </Grid>
+                  )}
+                  
+                  <Grid item xs={12}>
+                    <FormControlLabel
+                      control={
+                        <Switch
+                          checked={serverData.settings.allowAllFriends}
+                          onChange={(e) => {
+                            setServerData({
+                              ...serverData,
+                              settings: {
+                                ...serverData.settings,
+                                allowAllFriends: e.target.checked
+                              }
+                            });
+                          }}
+                          color="primary"
+                        />
+                      }
+                      label={
+                        <Box>
+                          <Typography variant="body1">Permitir a todos los amigos unirse</Typography>
+                          <Typography variant="caption" color="text.secondary">
+                            Los jugadores de tu lista de amigos pueden unirse sin invitación
+                          </Typography>
+                        </Box>
+                      }
+                    />
+                  </Grid>
+                </>
+              )}
+              
+              {/* Opciones específicas para Java */}
+              {serverData.type === 'java' && (
+                <>
+                  <Grid item xs={12}>
+                    <Divider sx={{ my: 2 }} />
+                    <Typography variant="subtitle1" gutterBottom fontWeight="bold" color="primary">
+                      Opciones exclusivas de Java Edition
+                    </Typography>
+                  </Grid>
+                  
+                  <Grid item xs={12}>
+                    <FormControlLabel
+                      control={
+                        <Switch
+                          checked={serverData.settings.commandBlocks}
+                          onChange={(e) => {
+                            setServerData({
+                              ...serverData,
+                              settings: {
+                                ...serverData.settings,
+                                commandBlocks: e.target.checked
+                              }
+                            });
+                          }}
+                          color="primary"
+                        />
+                      }
+                      label={
+                        <Box>
+                          <Typography variant="body1">Habilitar bloques de comandos</Typography>
+                          <Typography variant="caption" color="text.secondary">
+                            Permite usar bloques de comandos para automatizaciones avanzadas
+                          </Typography>
+                        </Box>
+                      }
+                    />
+                  </Grid>
+                  
+                  <Grid item xs={12}>
+                    <FormControlLabel
+                      control={
+                        <Switch
+                          checked={serverData.settings.pvp}
+                          onChange={(e) => {
+                            setServerData({
+                              ...serverData,
+                              settings: {
+                                ...serverData.settings,
+                                pvp: e.target.checked
+                              }
+                            });
+                          }}
+                          color="primary"
+                        />
+                      }
+                      label={
+                        <Box>
+                          <Typography variant="body1">Habilitar PvP</Typography>
+                          <Typography variant="caption" color="text.secondary">
+                            Permite el combate jugador contra jugador
+                          </Typography>
+                        </Box>
+                      }
+                    />
+                  </Grid>
+                </>
+              )}
+              
+              {/* Opciones comunes para ambos tipos */}
+              <Grid item xs={12}>
+                <Divider sx={{ my: 2 }} />
+                <Typography variant="subtitle1" gutterBottom>
+                  Opciones adicionales
+                </Typography>
+              </Grid>
+              
+              <Grid item xs={12}>
+                <FormControlLabel
+                  control={
+                    <Switch
+                      checked={serverData.settings.enableResourcePacks}
+                      onChange={(e) => {
+                        setServerData({
+                          ...serverData,
+                          settings: {
+                            ...serverData.settings,
+                            enableResourcePacks: e.target.checked
+                          }
+                        });
+                      }}
+                      color="primary"
+                    />
+                  }
+                  label={
+                    <Box>
+                      <Typography variant="body1">Habilitar paquetes de recursos</Typography>
+                      <Typography variant="caption" color="text.secondary">
+                        Los jugadores pueden usar paquetes de recursos personalizados
+                      </Typography>
+                    </Box>
+                  }
+                />
+              </Grid>
             </Grid>
           </Box>
         );
@@ -449,26 +755,56 @@ const CreateServer = () => {
               Resumen de la configuración
             </Typography>
             
-            <Paper variant="outlined" sx={{ p: 3, mb: 3 }}>
+            <Paper variant="outlined" sx={{ p: 3, mb: 3, borderRadius: 2 }}>
+              <Typography variant="subtitle1" color="primary" fontWeight="bold" sx={{ mb: 2 }}>
+                Información básica
+              </Typography>
+              
               <Grid container spacing={2}>
-                <Grid item xs={12} sm={6}>
+                <Grid item xs={12} md={4}>
                   <Typography variant="subtitle2" color="text.secondary">Nombre del Servidor</Typography>
-                  <Typography variant="body1">{serverData.name}</Typography>
+                  <Typography variant="body1" fontWeight="medium">{serverData.name}</Typography>
                 </Grid>
                 
-                <Grid item xs={12} sm={6}>
+                <Grid item xs={12} md={4}>
                   <Typography variant="subtitle2" color="text.secondary">Tipo</Typography>
-                  <Typography variant="body1">{serverData.type === 'java' ? 'Java Edition' : 'Bedrock Edition'}</Typography>
+                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                    <img 
+                      src={serverData.type === 'java' 
+                        ? "https://www.minecraft.net/content/dam/minecraft/java-edition-2021/java-key-art-2021.png" 
+                        : "https://www.minecraft.net/content/dam/minecraft/renderman/1-18-1/render1.png"
+                      } 
+                      alt={serverData.type} 
+                      width="24" 
+                      style={{
+                        borderRadius: '4px',
+                        filter: 'drop-shadow(0px 1px 1px rgba(0,0,0,0.2))'
+                      }}
+                    />
+                    <Typography variant="body1" fontWeight="medium">
+                      {serverData.type === 'java' ? 'Java Edition' : 'Bedrock Edition'}
+                    </Typography>
+                  </Box>
                 </Grid>
                 
-                <Grid item xs={12} sm={6}>
+                <Grid item xs={12} md={4}>
                   <Typography variant="subtitle2" color="text.secondary">Versión</Typography>
-                  <Typography variant="body1">{serverData.version}</Typography>
+                  <Typography variant="body1" fontWeight="medium">
+                    {versions.find(v => v.id === serverData.version)?.name || serverData.version}
+                  </Typography>
                 </Grid>
-                
-                <Grid item xs={12} sm={6}>
+              </Grid>
+            </Paper>
+            
+            <Paper variant="outlined" sx={{ p: 3, mb: 3, borderRadius: 2 }}>
+              <Typography variant="subtitle1" color="primary" fontWeight="bold" sx={{ mb: 2 }}>
+                Configuración del juego
+              </Typography>
+              
+              <Grid container spacing={2}>
+                <Grid item xs={12} md={4}>
                   <Typography variant="subtitle2" color="text.secondary">Modo de Juego</Typography>
-                  <Typography variant="body1">
+                  <Typography variant="body1" fontWeight="medium">
                     {{
                       survival: 'Supervivencia',
                       creative: 'Creativo',
@@ -478,9 +814,9 @@ const CreateServer = () => {
                   </Typography>
                 </Grid>
                 
-                <Grid item xs={12} sm={6}>
+                <Grid item xs={12} md={4}>
                   <Typography variant="subtitle2" color="text.secondary">Dificultad</Typography>
-                  <Typography variant="body1">
+                  <Typography variant="body1" fontWeight="medium">
                     {{
                       peaceful: 'Pacífico',
                       easy: 'Fácil',
@@ -490,28 +826,118 @@ const CreateServer = () => {
                   </Typography>
                 </Grid>
                 
-                <Grid item xs={12} sm={6}>
+                <Grid item xs={12} md={4}>
                   <Typography variant="subtitle2" color="text.secondary">Máximo de Jugadores</Typography>
-                  <Typography variant="body1">{serverData.settings.maxPlayers}</Typography>
+                  <Typography variant="body1" fontWeight="medium">{serverData.settings.maxPlayers}</Typography>
                 </Grid>
+                
+                {serverData.type === 'bedrock' && (
+                  <>
+                    <Grid item xs={12}>
+                      <Divider sx={{ my: 1 }} />
+                      <Typography variant="subtitle2" color="text.secondary" sx={{ mt: 1 }}>Características Bedrock</Typography>
+                    </Grid>
+                    
+                    <Grid item xs={12} md={4}>
+                      <Typography variant="subtitle2" color="text.secondary">Cross-play</Typography>
+                      <Chip 
+                        size="small"
+                        label={serverData.settings.crossplay ? "Habilitado" : "Deshabilitado"} 
+                        color={serverData.settings.crossplay ? "success" : "default"}
+                      />
+                    </Grid>
+                    
+                    <Grid item xs={12} md={4}>
+                      <Typography variant="subtitle2" color="text.secondary">Red personalizada</Typography>
+                      <Chip 
+                        size="small"
+                        label={serverData.settings.customNetwork ? (serverData.settings.customNetworkName || "Sin nombre") : "No configurada"} 
+                        color={serverData.settings.customNetwork ? "info" : "default"}
+                      />
+                    </Grid>
+                    
+                    <Grid item xs={12} md={4}>
+                      <Typography variant="subtitle2" color="text.secondary">Acceso de amigos</Typography>
+                      <Chip 
+                        size="small"
+                        label={serverData.settings.allowAllFriends ? "Todos los amigos" : "Solo invitados"} 
+                        color={serverData.settings.allowAllFriends ? "primary" : "default"}
+                      />
+                    </Grid>
+                  </>
+                )}
+                
+                {serverData.type === 'java' && (
+                  <>
+                    <Grid item xs={12}>
+                      <Divider sx={{ my: 1 }} />
+                      <Typography variant="subtitle2" color="text.secondary" sx={{ mt: 1 }}>Características Java</Typography>
+                    </Grid>
+                    
+                    <Grid item xs={12} md={4}>
+                      <Typography variant="subtitle2" color="text.secondary">Bloques de comandos</Typography>
+                      <Chip 
+                        size="small"
+                        label={serverData.settings.commandBlocks ? "Habilitado" : "Deshabilitado"} 
+                        color={serverData.settings.commandBlocks ? "success" : "default"}
+                      />
+                    </Grid>
+                    
+                    <Grid item xs={12} md={4}>
+                      <Typography variant="subtitle2" color="text.secondary">PvP</Typography>
+                      <Chip 
+                        size="small"
+                        label={serverData.settings.pvp ? "Habilitado" : "Deshabilitado"} 
+                        color={serverData.settings.pvp ? "success" : "default"}
+                      />
+                    </Grid>
+                  </>
+                )}
                 
                 <Grid item xs={12}>
                   <Divider sx={{ my: 1 }} />
+                  <Typography variant="subtitle2" color="text.secondary" sx={{ mt: 1 }}>Características adicionales</Typography>
                 </Grid>
                 
-                <Grid item xs={12} sm={4}>
-                  <Typography variant="subtitle2" color="text.secondary">RAM</Typography>
-                  <Typography variant="body1">{serverData.resources.ram} MB</Typography>
+                <Grid item xs={12} md={4}>
+                  <Typography variant="subtitle2" color="text.secondary">Paquetes de recursos</Typography>
+                  <Chip 
+                    size="small"
+                    label={serverData.settings.enableResourcePacks ? "Habilitado" : "Deshabilitado"} 
+                    color={serverData.settings.enableResourcePacks ? "success" : "default"}
+                  />
+                </Grid>
+              </Grid>
+            </Paper>
+            
+            <Paper variant="outlined" sx={{ p: 3, mb: 3, borderRadius: 2 }}>
+              <Typography variant="subtitle1" color="primary" fontWeight="bold" sx={{ mb: 2 }}>
+                Recursos asignados
+              </Typography>
+              
+              <Grid container spacing={2}>
+                <Grid item xs={12} md={4}>
+                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
+                    <MemoryIcon color="primary" fontSize="small" />
+                    <Typography variant="subtitle2" color="text.secondary">RAM</Typography>
+                  </Box>
+                  <Typography variant="body1" fontWeight="medium">{serverData.resources.ram} MB</Typography>
                 </Grid>
                 
-                <Grid item xs={12} sm={4}>
-                  <Typography variant="subtitle2" color="text.secondary">CPU</Typography>
-                  <Typography variant="body1">{serverData.resources.cpu} cores</Typography>
+                <Grid item xs={12} md={4}>
+                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
+                    <StorageIcon color="primary" fontSize="small" />
+                    <Typography variant="subtitle2" color="text.secondary">CPU</Typography>
+                  </Box>
+                  <Typography variant="body1" fontWeight="medium">{serverData.resources.cpu} cores</Typography>
                 </Grid>
                 
-                <Grid item xs={12} sm={4}>
-                  <Typography variant="subtitle2" color="text.secondary">Almacenamiento</Typography>
-                  <Typography variant="body1">{serverData.resources.storage} GB</Typography>
+                <Grid item xs={12} md={4}>
+                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
+                    <StorageIcon color="primary" fontSize="small" />
+                    <Typography variant="subtitle2" color="text.secondary">Almacenamiento</Typography>
+                  </Box>
+                  <Typography variant="body1" fontWeight="medium">{serverData.resources.storage} GB</Typography>
                 </Grid>
               </Grid>
             </Paper>

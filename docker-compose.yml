@@ -1,74 +1,61 @@
 version: '3.8'
 
 services:
-  # Aplicación Node.js
-  app:
-    build: .
-    container_name: ddsbedrocl-app
+  # Servicio de base de datos MongoDB
+  mongo:
+    image: mongo:6-jammy
+    container_name: whass-mongo
+    restart: always
+    volumes:
+      - mongo-data:/data/db
+    ports:
+      - "27017:27017"
+    networks:
+      - whass-network
+
+  # Servicio de backend
+  backend:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    container_name: whass-backend
     restart: always
     ports:
       - "5000:5000"
-    volumes:
-      - ./:/app
-      - /app/node_modules
-      - /var/run/docker.sock:/var/run/docker.sock
-      - minecraft-servers:/app/minecraft-servers
-      - backups:/app/backups
-      - logs:/app/logs
-    depends_on:
-      - mongo
     environment:
       - NODE_ENV=production
       - PORT=5000
-      - MONGO_URI=mongodb://mongo:27017/ddsbedrocl
+      - MONGO_URI=mongodb://mongo:27017/whass-hosting
       - JWT_SECRET=${JWT_SECRET}
       - JWT_EXPIRE=30d
-      - CLIENT_URL=http://localhost:3000
-      - DOCKER_SOCKET=/var/run/docker.sock
-      - SERVER_DATA_PATH=/app/minecraft-servers
-      - BACKUP_PATH=/app/backups
-    networks:
-      - ddsbedrocl-network
-  
-  # Base de datos MongoDB
-  mongo:
-    image: mongo:5.0
-    container_name: ddsbedrocl-mongo
-    restart: always
-    ports:
-      - "27017:27017"
-    volumes:
-      - mongo-data:/data/db
-    networks:
-      - ddsbedrocl-network
-  
-  # Cliente de la aplicación
-  client:
-    build: ./client
-    container_name: ddsbedrocl-client
-    restart: always
-    ports:
-      - "3000:3000"
-    volumes:
-      - ./client:/app
-      - /app/node_modules
-    environment:
-      - REACT_APP_API_URL=http://localhost:5000/api
-    networks:
-      - ddsbedrocl-network
+      - JWT_COOKIE_EXPIRE=30
     depends_on:
-      - app
+      - mongo
+    networks:
+      - whass-network
 
-networks:
-  ddsbedrocl-network:
-    driver: bridge
+  # Servicio de frontend
+  frontend:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    container_name: whass-frontend
+    restart: always
+    ports:
+      - "3000:80"
+    environment:
+      - REACT_APP_API_URL=http://backend:5000/api
+    depends_on:
+      - backend
+    networks:
+      - whass-network
 
+# Definición de volúmenes
 volumes:
   mongo-data:
     driver: local
-  minecraft-servers:
-    driver: local
-  backups:
-    driver: local
-  logs:
-    driver: local 
+
+# Definición de redes
+networks:
+  whass-network:
+    driver: bridge 

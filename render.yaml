@@ -21,7 +21,7 @@ services:
         value: whass_xHlmDHxypDVWOv2Cu8fY7FgCw1JZXEgXkIGC2JjGDmh6yJ08
       # Nota: Deberás agregar manualmente la URL de MongoDB Atlas
       - key: MONGO_URI
-        sync: false
+        value: mongodb+srv://davdlasso:ddslasso14@cluster0.9lewey2.mongodb.net/whass?retryWrites=true&w=majority&appName=Cluster0
     autoDeploy: true
 
   # Frontend service

@@ -24,11 +24,13 @@ services:
         value: mongodb+srv://davdlasso:ddslasso14@cluster0.9lewey2.mongodb.net/whass?retryWrites=true&w=majority&appName=Cluster0
     autoDeploy: true
 
-  # Frontend service - Sitio estático (siempre gratuito)
-  - type: static
+  # Frontend service como web site en lugar de static
+  - type: web
     name: whass-frontend
+    env: static
     buildCommand: cd client && npm install && npm run build
-    publishDir: client/dist
+    staticPublishPath: client/dist
+    plan: free
     envVars:
       - key: VITE_API_URL
         value: https://whass-backend.onrender.com/api

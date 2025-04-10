@@ -19,27 +19,13 @@ services:
         value: 30
       - key: JWT_SECRET
         value: whass_xHlmDHxypDVWOv2Cu8fY7FgCw1JZXEgXkIGC2JjGDmh6yJ08
+      # Nota: Deberás agregar manualmente la URL de MongoDB Atlas
       - key: MONGO_URI
-        value: mongodb://whass_admin:Whass_MongoDB_4226@whass-mongodb:27017/whass?authSource=admin
+        sync: false
     autoDeploy: true
 
-  # MongoDB database
-  - type: pserv
-    name: whass-mongodb
-    env: docker
-    repo: https://github.com/render-examples/mongodb.git
-    envVars:
-      - key: MONGO_INITDB_ROOT_USERNAME
-        value: whass_admin
-      - key: MONGO_INITDB_ROOT_PASSWORD
-        value: Whass_MongoDB_4226
-    disk:
-      name: data
-      mountPath: /data/db
-      sizeGB: 1
-      
   # Frontend service
-  - type: web
+  - type: static
     name: whass-frontend
     env: static
     rootDir: client

@@ -1,4 +1,4 @@
-const API_URL = process.env.REACT_APP_API_URL || 'https://whass-production.up.railway.app/api';
+const API_URL = import.meta.env.VITE_API_URL || 'https://whass-production.up.railway.app/api';
 
 export const API_ENDPOINTS = {
   // Auth

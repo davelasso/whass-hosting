@@ -29,7 +29,6 @@ services:
     name: whass-frontend
     env: static
     rootDir: client
-    plan: free
     buildCommand: npm install && npm run build
     staticPublishPath: ./dist
     envVars:

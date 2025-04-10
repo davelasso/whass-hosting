@@ -10,6 +10,56 @@ const { protect } = require('../middleware/auth');
 // Importar rutas de backups
 const backupRoutes = require('./backups');
 
+/**
+ * @swagger
+ * /api/servers/plans:
+ *   get:
+ *     summary: Obtener planes de hosting disponibles
+ *     tags: [Servers]
+ *     parameters:
+ *       - in: query
+ *         name: type
+ *         schema:
+ *           type: string
+ *           enum: [java, bedrock]
+ *         description: Filtrar planes por tipo de servidor
+ *     responses:
+ *       200:
+ *         description: Planes de hosting obtenidos correctamente
+ */
+router.get('/plans', serverController.getHostingPlans);
+
+/**
+ * @swagger
+ * /api/servers/types:
+ *   get:
+ *     summary: Obtener tipos de servidores disponibles
+ *     tags: [Servers]
+ *     responses:
+ *       200:
+ *         description: Tipos de servidores obtenidos correctamente
+ */
+router.get('/types', serverController.getServerTypes);
+
+/**
+ * @swagger
+ * /api/servers/versions:
+ *   get:
+ *     summary: Obtener versiones disponibles de Minecraft
+ *     tags: [Servers]
+ *     parameters:
+ *       - in: query
+ *         name: type
+ *         schema:
+ *           type: string
+ *           enum: [java, bedrock]
+ *         description: Filtrar versiones por tipo
+ *     responses:
+ *       200:
+ *         description: Versiones obtenidas correctamente
+ */
+router.get('/versions', serverController.getMinecraftVersions);
+
 // Middleware de autenticación para todas las rutas
 router.use(protect);
 
@@ -18,33 +68,13 @@ router.use('/:serverId/backups', backupRoutes);
 
 /**
  * @swagger
- * /api/servers/versions:
- *   get:
- *     summary: Obtener versiones disponibles de Minecraft
- *     tags: [Servers]
- *     security:
- *       - bearerAuth: []
- *     responses:
- *       200:
- *         description: Versiones obtenidas correctamente
- *       401:
- *         description: No autorizado
- */
-router.get('/versions', serverController.getMinecraftVersions);
-
-/**
- * @swagger
  * /api/servers:
  *   get:
  *     summary: Obtener todos los servidores del usuario
  *     tags: [Servers]
- *     security:
- *       - bearerAuth: []
  *     responses:
  *       200:
  *         description: Lista de servidores obtenida correctamente
- *       401:
- *         description: No autorizado
  */
 router.get('/', serverController.getServers);
 
@@ -54,8 +84,6 @@ router.get('/', serverController.getServers);
  *   get:
  *     summary: Obtener un servidor específico
  *     tags: [Servers]
- *     security:
- *       - bearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -66,8 +94,6 @@ router.get('/', serverController.getServers);
  *     responses:
  *       200:
  *         description: Servidor obtenido correctamente
- *       401:
- *         description: No autorizado
  *       404:
  *         description: Servidor no encontrado
  */
@@ -79,8 +105,6 @@ router.get('/:id', serverController.getServer);
  *   post:
  *     summary: Crear un nuevo servidor
  *     tags: [Servers]
- *     security:
- *       - bearerAuth: []
  *     requestBody:
  *       required: true
  *       content:
@@ -96,18 +120,13 @@ router.get('/:id', serverController.getServer);
  *                 type: string
  *               type:
  *                 type: string
- *                 enum: [java, bedrock]
  *               version:
  *                 type: string
- *               ram:
- *                 type: number
  *     responses:
  *       201:
  *         description: Servidor creado correctamente
  *       400:
  *         description: Datos inválidos
- *       401:
- *         description: No autorizado
  */
 router.post('/', serverController.createServer);
 
@@ -117,8 +136,6 @@ router.post('/', serverController.createServer);
  *   put:
  *     summary: Actualizar un servidor
  *     tags: [Servers]
- *     security:
- *       - bearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -135,15 +152,11 @@ router.post('/', serverController.createServer);
  *             properties:
  *               name:
  *                 type: string
- *               ram:
- *                 type: number
  *     responses:
  *       200:
  *         description: Servidor actualizado correctamente
  *       400:
  *         description: Datos inválidos
- *       401:
- *         description: No autorizado
  *       404:
  *         description: Servidor no encontrado
  */
@@ -155,8 +168,6 @@ router.put('/:id', serverController.updateServer);
  *   delete:
  *     summary: Eliminar un servidor
  *     tags: [Servers]
- *     security:
- *       - bearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -167,8 +178,6 @@ router.put('/:id', serverController.updateServer);
  *     responses:
  *       200:
  *         description: Servidor eliminado correctamente
- *       401:
- *         description: No autorizado
  *       404:
  *         description: Servidor no encontrado
  */
@@ -180,8 +189,6 @@ router.delete('/:id', serverController.deleteServer);
  *   post:
  *     summary: Iniciar un servidor
  *     tags: [Servers]
- *     security:
- *       - bearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -192,8 +199,6 @@ router.delete('/:id', serverController.deleteServer);
  *     responses:
  *       200:
  *         description: Servidor iniciado correctamente
- *       401:
- *         description: No autorizado
  *       404:
  *         description: Servidor no encontrado
  */
@@ -205,8 +210,6 @@ router.post('/:id/start', serverController.startServer);
  *   post:
  *     summary: Detener un servidor
  *     tags: [Servers]
- *     security:
- *       - bearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -217,8 +220,6 @@ router.post('/:id/start', serverController.startServer);
  *     responses:
  *       200:
  *         description: Servidor detenido correctamente
- *       401:
- *         description: No autorizado
  *       404:
  *         description: Servidor no encontrado
  */
@@ -230,8 +231,6 @@ router.post('/:id/stop', serverController.stopServer);
  *   post:
  *     summary: Reiniciar un servidor
  *     tags: [Servers]
- *     security:
- *       - bearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -242,8 +241,6 @@ router.post('/:id/stop', serverController.stopServer);
  *     responses:
  *       200:
  *         description: Servidor reiniciado correctamente
- *       401:
- *         description: No autorizado
  *       404:
  *         description: Servidor no encontrado
  */
@@ -251,12 +248,10 @@ router.post('/:id/restart', serverController.restartServer);
 
 /**
  * @swagger
- * /api/servers/{id}/logs:
+ * /api/servers/{id}/console:
  *   get:
- *     summary: Obtener logs de un servidor
+ *     summary: Obtener logs de la consola del servidor
  *     tags: [Servers]
- *     security:
- *       - bearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -267,21 +262,17 @@ router.post('/:id/restart', serverController.restartServer);
  *     responses:
  *       200:
  *         description: Logs obtenidos correctamente
- *       401:
- *         description: No autorizado
  *       404:
  *         description: Servidor no encontrado
  */
-router.get('/:id/logs', serverController.getServerLogs);
+router.get('/:id/console', serverController.getConsoleLogs);
 
 /**
  * @swagger
  * /api/servers/{id}/command:
  *   post:
- *     summary: Ejecutar comando en un servidor
+ *     summary: Enviar un comando al servidor
  *     tags: [Servers]
- *     security:
- *       - bearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -300,39 +291,13 @@ router.get('/:id/logs', serverController.getServerLogs);
  *             properties:
  *               command:
  *                 type: string
+ *                 description: Comando a ejecutar
  *     responses:
  *       200:
  *         description: Comando ejecutado correctamente
- *       401:
- *         description: No autorizado
  *       404:
  *         description: Servidor no encontrado
  */
-router.post('/:id/command', serverController.executeCommand);
-
-/**
- * @swagger
- * /api/servers/{id}/stats:
- *   get:
- *     summary: Obtener estadísticas de un servidor
- *     tags: [Servers]
- *     security:
- *       - bearerAuth: []
- *     parameters:
- *       - in: path
- *         name: id
- *         required: true
- *         schema:
- *           type: string
- *         description: ID del servidor
- *     responses:
- *       200:
- *         description: Estadísticas obtenidas correctamente
- *       401:
- *         description: No autorizado
- *       404:
- *         description: Servidor no encontrado
- */
-router.get('/:id/stats', serverController.getServerStats);
+router.post('/:id/command', serverController.executeCommandTemp);
 
 module.exports = router;

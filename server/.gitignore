@@ -1,0 +1,42 @@
+# Dependencias
+node_modules/
+npm-debug.log
+yarn-error.log
+yarn-debug.log
+package-lock.json
+
+# Entorno
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Directorios de construcción
+/dist
+/build
+/coverage
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Archivos de registro
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Archivos temporales
+tmp/
+temp/
+
+# Otros
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw? 

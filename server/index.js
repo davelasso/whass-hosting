@@ -61,19 +61,21 @@ app.use(rateLimit({
   }
 }));
 
-// Rutas de la API
-app.use('/api/auth', authRoutes);
-app.use('/api/health', healthRoutes);
-app.use('/api/servers', serverRoutes);
-
-// Health check endpoint directo
+// Health check endpoint directo - MUY IMPORTANTE PARA RENDER
 app.get('/health', (req, res) => {
   res.status(200).json({
     status: 'success',
     message: 'Servidor funcionando correctamente',
-    timestamp: new Date()
+    timestamp: new Date(),
+    environment: process.env.NODE_ENV || 'development',
+    port: PORT
   });
 });
+
+// Rutas de la API
+app.use('/api/auth', authRoutes);
+app.use('/api/health', healthRoutes);
+app.use('/api/servers', serverRoutes);
 
 // API de planes de hosting
 app.get('/api/plans', (req, res) => {
@@ -171,16 +173,7 @@ app.get('/api/plans', (req, res) => {
   });
 });
 
-// Servir archivos estáticos en producción
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '../client/build')));
-  
-  app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
-  });
-}
-
-// Middleware de manejo de errores
+// Middleware de manejo de errores para rutas no encontradas
 app.use((req, res, next) => {
   res.status(404).json({
     status: 'error',
@@ -188,6 +181,7 @@ app.use((req, res, next) => {
   });
 });
 
+// Middleware de manejo de errores
 app.use((err, req, res, next) => {
   console.error(`Error: ${err.message}`);
   
@@ -201,7 +195,8 @@ app.use((err, req, res, next) => {
 });
 
 // Iniciar el servidor
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
   console.log(`Servidor ejecutándose en el puerto ${PORT}`);
   console.log(`API disponible en http://localhost:${PORT}/api/health`);
+  console.log(`Health check disponible en http://localhost:${PORT}/health`);
 });
